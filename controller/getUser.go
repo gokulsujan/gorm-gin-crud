@@ -8,11 +8,7 @@ import (
 )
 
 func UserData(c *gin.Context) {
-	result := configuration.DB.Find(&models.User{})
-
-	if result.Error != nil {
-		c.Status(500)
-		return
-	}
-	c.JSON(200, gin.H{"Users": result})
+	var userList []models.User
+	configuration.DB.Find(&userList)
+	c.JSON(200, gin.H{"Users": userList})
 }
