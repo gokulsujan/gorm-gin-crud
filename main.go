@@ -20,6 +20,7 @@ func main() {
 		c.JSON(http.StatusAccepted, gin.H{"message": "Hello"})
 	})
 	r.POST("/createUser", controller.UserCreation)
+	r.GET("/users", controller.UserData)
 
 	r.Run()
 

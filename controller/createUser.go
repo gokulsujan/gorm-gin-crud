@@ -9,10 +9,9 @@ import (
 
 func UserCreation(c *gin.Context) {
 	// assigning user details
-	user := models.User{
-		Name: "Gokul Sujan",
-		Age:  24,
-	}
+
+	user := models.User{}
+	c.ShouldBindJSON(&user)
 
 	//inserting into user table
 	result := configuration.DB.Create(&user)
@@ -23,6 +22,6 @@ func UserCreation(c *gin.Context) {
 		return
 	}
 
-	c.JSON(200, gin.H{"Insereted": user})
+	c.JSON(200, gin.H{"Message": "Successfully inserted the data into database"})
 
 }
