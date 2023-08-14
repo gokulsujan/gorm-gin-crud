@@ -21,6 +21,7 @@ func main() {
 	})
 	r.POST("/createUser", controller.UserCreation)
 	r.GET("/users", controller.UserData)
+	r.POST("/userUpdate/:id", controller.UserUpdate)
 
 	r.Run()
 
